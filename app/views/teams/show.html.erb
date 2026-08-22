@@ -1,0 +1,48 @@
+<%= link_to "← Back to teams", teams_path, class: "text-indigo-600 hover:underline mb-4 inline-block" %>
+
+<div class="flex justify-between items-center mb-6">
+  <h1 class="text-2xl font-bold text-gray-900"><%= @team.name %></h1>
+  <div class="flex gap-2">
+    <%= link_to "New Project", new_team_project_path(@team), class: "bg-indigo-600 text-white px-4 py-2 rounded-lg hover:bg-indigo-700" %>
+    <%= link_to "Edit", edit_team_path(@team), class: "bg-gray-200 text-gray-700 px-4 py-2 rounded-lg hover:bg-gray-300" %>
+  </div>
+</div>
+
+<p class="text-gray-600 mb-6"><%= @team.description %></p>
+
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+  <div class="md:col-span-2">
+    <h2 class="text-lg font-semibold text-gray-900 mb-4">Projects</h2>
+    <% if @projects.any? %>
+      <div class="space-y-3">
+        <% @projects.each do |project| %>
+          <%= link_to project_path(project), class: "block bg-white rounded-lg shadow p-4 hover:shadow-md transition" do %>
+            <div class="flex justify-between items-start">
+              <div>
+                <h3 class="font-semibold text-gray-900"><%= project.name %></h3>
+                <p class="text-sm text-gray-500"><%= project.tasks.count %> tasks</p>
+              </div>
+              <span class="px-2 py-1 text-xs rounded <%= project.status == 'completed' ? 'bg-green-100 text-green-800' : project.status == 'in_progress' ? 'bg-yellow-100 text-yellow-800' : 'bg-gray-100 text-gray-800' %>">
+                <%= project.status.humanize %>
+              </span>
+            </div>
+          <% end %>
+        <% end %>
+      </div>
+    <% else %>
+      <p class="text-gray-500">No projects yet.</p>
+    <% end %>
+  </div>
+
+  <div>
+    <h2 class="text-lg font-semibold text-gray-900 mb-4">Members</h2>
+    <div class="space-y-2">
+      <% @members.each do |member| %>
+        <div class="bg-white rounded-lg shadow p-3 flex justify-between items-center">
+          <span class="text-sm text-gray-900"><%= member.email %></span>
+          <span class="text-xs text-gray-500"><%= member.role_on(@team) %></span>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
