@@ -1,38 +1,38 @@
 <% if user_signed_in? %>
   <div class="flex justify-between items-center mb-8">
-    <h1 class="text-2xl font-bold text-gray-900">My Dashboard</h1>
-    <%= link_to "New Team", new_team_path, class: "bg-indigo-600 text-white px-4 py-2 rounded-lg hover:bg-indigo-700" %>
+    <h1 class="text-2xl font-bold text-gray-100">My Dashboard</h1>
+    <%= link_to "New Team", new_team_path, class: "bg-cyan-600 text-white px-4 py-2 rounded-lg hover:bg-cyan-700" %>
   </div>
 
   <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
     <div>
-      <h2 class="text-lg font-semibold text-gray-900 mb-4">My Teams</h2>
+      <h2 class="text-lg font-semibold text-gray-100 mb-4">My Teams</h2>
       <% if @teams.any? %>
         <div class="space-y-3">
           <% @teams.each do |team| %>
-            <%= link_to team_path(team), class: "block bg-white rounded-lg shadow p-4 hover:shadow-md transition" do %>
-              <h3 class="font-semibold text-gray-900"><%= team.name %></h3>
-              <p class="text-sm text-gray-500"><%= team.projects.count %> projects | <%= team.users.count %> members</p>
+            <%= link_to team_path(team), class: "block bg-gray-800 border border-gray-700 rounded-lg p-4 hover:border-cyan-500 transition" do %>
+              <h3 class="font-semibold text-gray-100"><%= team.name %></h3>
+              <p class="text-sm text-gray-400"><%= team.projects.count %> projects | <%= team.users.count %> members</p>
             <% end %>
           <% end %>
         </div>
       <% else %>
-        <p class="text-gray-500">No teams yet. Create one to get started!</p>
+        <p class="text-gray-400">No teams yet. Create one to get started!</p>
       <% end %>
     </div>
 
     <div>
-      <h2 class="text-lg font-semibold text-gray-900 mb-4">Recent Tasks</h2>
+      <h2 class="text-lg font-semibold text-gray-100 mb-4">Recent Tasks</h2>
       <% if @recent_tasks.any? %>
         <div class="space-y-3">
           <% @recent_tasks.each do |task| %>
-            <%= link_to task_path(task), class: "block bg-white rounded-lg shadow p-4 hover:shadow-md transition" do %>
+            <%= link_to task_path(task), class: "block bg-gray-800 border border-gray-700 rounded-lg p-4 hover:border-cyan-500 transition" do %>
               <div class="flex justify-between items-start">
                 <div>
-                  <h3 class="font-semibold text-gray-900"><%= task.title %></h3>
-                  <p class="text-sm text-gray-500"><%= task.project.name %></p>
+                  <h3 class="font-semibold text-gray-100"><%= task.title %></h3>
+                  <p class="text-sm text-gray-400"><%= task.project.name %></p>
                 </div>
-                <span class="px-2 py-1 text-xs rounded <%= task.status == 'done' ? 'bg-green-100 text-green-800' : task.status == 'in_progress' ? 'bg-yellow-100 text-yellow-800' : 'bg-gray-100 text-gray-800' %>">
+                <span class="px-2 py-1 text-xs rounded <%= task.status == 'done' ? 'bg-green-900/50 text-green-300 border border-green-700' : task.status == 'in_progress' ? 'bg-yellow-900/50 text-yellow-300 border border-yellow-700' : 'bg-gray-700 text-gray-300 border border-gray-600' %>">
                   <%= task.status.humanize %>
                 </span>
               </div>
@@ -40,17 +40,17 @@
           <% end %>
         </div>
       <% else %>
-        <p class="text-gray-500">No tasks yet.</p>
+        <p class="text-gray-400">No tasks yet.</p>
       <% end %>
     </div>
   </div>
 <% else %>
   <div class="text-center py-16">
-    <h1 class="text-4xl font-bold text-gray-900 mb-4">Project Manager</h1>
-    <p class="text-xl text-gray-600 mb-8">Organize your teams, projects, and tasks in real-time.</p>
+    <h1 class="text-4xl font-bold text-gray-100 mb-4">Project Manager</h1>
+    <p class="text-xl text-gray-400 mb-8">Organize your teams, projects, and tasks in real-time.</p>
     <div class="flex justify-center gap-4">
-      <%= link_to "Sign up", new_user_registration_path, class: "bg-indigo-600 text-white px-8 py-3 rounded-lg hover:bg-indigo-700 text-lg" %>
-      <%= link_to "Login", new_user_session_path, class: "bg-white text-gray-700 px-8 py-3 rounded-lg hover:bg-gray-100 text-lg border" %>
+      <%= link_to "Sign up", new_user_registration_path, class: "bg-cyan-600 text-white px-8 py-3 rounded-lg hover:bg-cyan-700 text-lg" %>
+      <%= link_to "Login", new_user_session_path, class: "bg-gray-800 text-gray-300 px-8 py-3 rounded-lg hover:bg-gray-700 text-lg border border-gray-700" %>
     </div>
   </div>
 <% end %>

@@ -1,26 +1,26 @@
-<%= link_to "← Back to #{@project.team.name}", team_path(@project.team), class: "text-indigo-600 hover:underline mb-4 inline-block" %>
+<%= link_to "← Back to #{@project.team.name}", team_path(@project.team), class: "text-cyan-400 hover:underline mb-4 inline-block" %>
 
 <div class="flex justify-between items-center mb-6">
-  <h1 class="text-2xl font-bold text-gray-900"><%= @project.name %></h1>
+  <h1 class="text-2xl font-bold text-gray-100"><%= @project.name %></h1>
   <div class="flex gap-2">
-    <%= link_to "Edit", edit_project_path(@project), class: "bg-gray-200 text-gray-700 px-4 py-2 rounded-lg hover:bg-gray-300" %>
+    <%= link_to "Edit", edit_project_path(@project), class: "bg-gray-700 text-gray-300 px-4 py-2 rounded-lg hover:bg-gray-600" %>
   </div>
 </div>
 
-<p class="text-gray-600 mb-6"><%= @project.description %></p>
+<p class="text-gray-400 mb-6"><%= @project.description %></p>
 
 <div class="flex gap-4 mb-6">
-  <span class="px-3 py-1 text-sm rounded <%= @project.status == 'completed' ? 'bg-green-100 text-green-800' : @project.status == 'in_progress' ? 'bg-yellow-100 text-yellow-800' : 'bg-gray-100 text-gray-800' %>">
+  <span class="px-3 py-1 text-sm rounded <%= @project.status == 'completed' ? 'bg-green-900/50 text-green-300 border border-green-700' : @project.status == 'in_progress' ? 'bg-yellow-900/50 text-yellow-300 border border-yellow-700' : 'bg-gray-700 text-gray-300 border border-gray-600' %>">
     <%= @project.status.humanize %>
   </span>
   <% if @project.deadline.present? %>
-    <span class="text-sm text-gray-500">Due: <%= @project.deadline.strftime("%b %d, %Y") %></span>
+    <span class="text-sm text-gray-400">Due: <%= @project.deadline.strftime("%b %d, %Y") %></span>
   <% end %>
 </div>
 
 <div class="flex justify-between items-center mb-4">
-  <h2 class="text-lg font-semibold text-gray-900">Tasks</h2>
-  <%= link_to "New Task", new_project_task_path(@project), class: "bg-indigo-600 text-white px-4 py-2 rounded-lg hover:bg-indigo-700" %>
+  <h2 class="text-lg font-semibold text-gray-100">Tasks</h2>
+  <%= link_to "New Task", new_project_task_path(@project), class: "bg-cyan-600 text-white px-4 py-2 rounded-lg hover:bg-cyan-700" %>
 </div>
 
 <div id="tasks" class="space-y-3">
@@ -30,5 +30,5 @@
 </div>
 
 <% if @tasks.empty? %>
-  <p class="text-gray-500">No tasks yet.</p>
+  <p class="text-gray-400">No tasks yet.</p>
 <% end %>
