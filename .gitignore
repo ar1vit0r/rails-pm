@@ -36,3 +36,7 @@
 
 /app/assets/builds/*
 !/app/assets/builds/.keep
+
+# Ignore Claude Code local config and generated docs.
+/.claude
+/CLAUDE.md
