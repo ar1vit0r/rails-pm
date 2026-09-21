@@ -40,3 +40,6 @@
 # Ignore Claude Code local config and generated docs.
 /.claude
 /CLAUDE.md
+
+# Local scratch notes (known issues, todo).
+/roadmap.md
