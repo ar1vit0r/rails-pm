@@ -1,8 +1,9 @@
 class CommentsController < ApplicationController
   before_action :authenticate_user!
+  before_action :set_task
+  before_action :require_member
 
   def create
-    @task = Task.find(params[:task_id])
     @comment = @task.comments.build(comment_params)
     @comment.user = current_user
 
@@ -17,6 +18,14 @@ class CommentsController < ApplicationController
   end
 
   private
+
+  def set_task
+    @task = Task.find(params[:task_id])
+  end
+
+  def require_member
+    redirect_to root_path, alert: "Not authorized" unless current_user.member_of?(@task.project.team)
+  end
 
   def comment_params
     params.require(:comment).permit(:body)
