@@ -6,5 +6,7 @@ class Project < ApplicationRecord
   validates :name, presence: true
   validates :status, presence: true
 
-  enum :status, { planning: "planning", in_progress: "in_progress", completed: "completed" }
+  # validate: turns a bogus value into a validation error instead of an ArgumentError on assignment.
+  # allow_nil: the presence validation above already reports blanks.
+  enum :status, { planning: "planning", in_progress: "in_progress", completed: "completed" }, validate: { allow_nil: true }
 end
