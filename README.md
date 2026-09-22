@@ -18,7 +18,7 @@ A real-time team collaboration tool built with Rails 8 and Hotwire, featuring pr
 |-------|------------|
 | Framework | Ruby on Rails 8.1 |
 | Language | Ruby 3.4 |
-| Database | SQLite (dev) / PostgreSQL (prod) |
+| Database | SQLite (dev and prod) |
 | Real-time | Hotwire (Turbo Streams) |
 | Auth | Devise 5.0 |
 | Pagination | Pagy |
@@ -37,7 +37,7 @@ bin/rails db:create db:migrate db:seed
 bin/dev
 ```
 
-Open [http://localhost:3002](http://localhost:3002).
+Open [http://localhost:3000](http://localhost:3000).
 
 **Admin login:** `admin@example.com` / `password`
 **User login:** `user@example.com` / `password`
@@ -48,15 +48,11 @@ Open [http://localhost:3002](http://localhost:3002).
 bundle exec rspec
 ```
 
-39 examples across model and request specs.
+71 examples across model and request specs.
 
 ## Deployment
 
-Configured via `render.yaml` (Blueprints):
-
-1. Push to GitHub
-2. Connect Render → New Blueprint
-3. Auto-deploys on `main` branch push
+Hosted on [Render](https://render.com), configured via the Render dashboard. Push to `main` to deploy.
 
 ## Skills Demonstrated
 
